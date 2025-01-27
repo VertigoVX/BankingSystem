@@ -1,10 +1,10 @@
-# Use an official Python runtime as a parent image
+# Python runtime as a parent image
 FROM python:3.9-slim
 
-# Set the working directory in the container
+# Set the working directory 
 WORKDIR /app
 
-# Copy the requirements file into the container
+# Copy the requirements file 
 COPY requirements.txt .
 
 # Install any needed packages specified in requirements.txt
