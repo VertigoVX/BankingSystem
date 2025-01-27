@@ -15,7 +15,7 @@ def handle_http_exception(e):
         "message": e.description
     }), e.code
 
-# Error handler for 500 Internal Server Error
+# Error handler for 500 
 @app.errorhandler(Exception)
 def handle_exception(e):
     return jsonify({
@@ -23,12 +23,12 @@ def handle_exception(e):
         "message": "An unexpected error occurred."
     }), 500
 
-# Example route to test error handling
+# Example route test
 @app.route("/test-error")
 def test_error():
     raise ValueError("This is a test error")
 
-# Database configuration
+# Database config
 app.app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'postgresql://admin:p@ssw0rd@localhost:5432/banking_system')
 app.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
