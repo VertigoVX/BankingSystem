@@ -1,4 +1,3 @@
-# test_controllers.py
 import unittest
 from app import create_app, db
 from controllers.transaction_controller import add_transaction, get_transactions
