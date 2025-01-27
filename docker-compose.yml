@@ -1,0 +1,50 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:13
+    container_name: banking_db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: p@ssw0rd
+      POSTGRES_DB: banking_system
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build:
+      context: ./banking_system
+      dockerfile: Dockerfile
+    container_name: banking_backend
+    environment:
+      FLASK_ENV: development
+      DATABASE_URL: postgresql://admin:p@ssw0rd@db:5432/banking_system
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./banking_system_frontend
+      dockerfile: Dockerfile
+    container_name: banking_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+  
+  backend_tests:
+    build:
+      context: ./banking_system
+      dockerfile: Dockerfile
+    container_name: banking_backend_tests
+    environment:
+      FLASK_ENV: testing
+      DATABASE_URL: sqlite:///:memory:
+    command: pytest tests/ --cov=app
+
+volumes:
+  postgres_data:
