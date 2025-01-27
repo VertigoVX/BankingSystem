@@ -74,14 +74,14 @@ git clone https://github.com/VertigoVX/BankingSystem.git
 cd BankingSystem
 ```
 
-Step 2: Build and Run with Docker Compose
+### 2. Build and Run with Docker Compose
 Build and Start the Containers:
 
 ```bash
 docker-compose up --build
 ```
 
-### Access the Application:
+### 3. Access the Application:
 
 - Frontend: Open http://localhost:80 in your browser.
 
@@ -89,7 +89,7 @@ docker-compose up --build
 
 - Swagger UI: Accessible at http://localhost:5000/ui.
 
-### Stop the Containers:
+### 4. Stop the Containers:
 
 ```bash
 docker-compose down
