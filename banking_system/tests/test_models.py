@@ -1,4 +1,3 @@
-# test_models.py
 import unittest
 from datetime import datetime
 from app import create_app, db
