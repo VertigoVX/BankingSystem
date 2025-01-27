@@ -1,0 +1,147 @@
+body {
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  background-color: #F5F5F5;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #0047BB;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+header .logo {
+  height: 50px;
+  margin-bottom: 10px;
+}
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+main {
+  padding: 20px;
+}
+
+.balance-section {
+  margin-bottom: 20px;
+}
+.balance-section h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.balance-section #balance {
+  font-size: 24px;
+  font-weight: bold;
+  color: #0047BB;
+}
+
+.transactions-section h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.transactions-section #add-transaction-btn {
+  background-color: #FF6B00;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+.transactions-section #add-transaction-btn:hover {
+  background-color: rgb(204, 85.6, 0);
+}
+.transactions-section #transactions-list .transaction-item {
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.transactions-section #transactions-list .transaction-item .transaction-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.transactions-section #transactions-list .transaction-item .transaction-header .transaction-type {
+  font-weight: bold;
+  color: #0047BB;
+}
+.transactions-section #transactions-list .transaction-item .transaction-header .transaction-amount {
+  font-weight: bold;
+}
+.transactions-section #transactions-list .transaction-item .transaction-description {
+  margin-bottom: 10px;
+}
+.transactions-section #transactions-list .transaction-item .transaction-actions button {
+  background-color: #FF6B00;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.transactions-section #transactions-list .transaction-item .transaction-actions button:hover {
+  background-color: rgb(204, 85.6, 0);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+.modal .modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+}
+.modal .modal-content .close-btn {
+  float: right;
+  cursor: pointer;
+}
+.modal .modal-content form {
+  display: flex;
+  flex-direction: column;
+}
+.modal .modal-content form label {
+  margin-bottom: 5px;
+}
+.modal .modal-content form input,
+.modal .modal-content form select {
+  margin-bottom: 15px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.modal .modal-content form button {
+  background-color: #0047BB;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+.modal .modal-content form button:hover {
+  background-color: rgb(0, 51.6363636364, 136);
+}
+
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  display: none;
+}
+
+/*# sourceMappingURL=main.css.map */
