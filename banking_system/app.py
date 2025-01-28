@@ -3,9 +3,20 @@ from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from connexion import App
 from werkzeug.exceptions import HTTPException
+from dotenv import load_dotenv
 
-app = Flask(__name__)
+# Load environment variables from .env file
+load_dotenv()
+
+flask_app = Flask(__name__)
+app = App(__name__, specification_dir="./")
 app.add_api("swagger.yml")
+
+# Database config
+flask_app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'postgresql://admin:p@ssw0rd@localhost:5432/banking_system')
+flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(flask_app)
 
 # Error handler for HTTP exceptions
 @app.errorhandler(HTTPException)
@@ -23,16 +34,6 @@ def handle_exception(e):
         "message": "An unexpected error occurred."
     }), 500
 
-# Example route test
-@app.route("/test-error")
-def test_error():
-    raise ValueError("This is a test error")
-
-# Database config
-app.app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'postgresql://admin:p@ssw0rd@localhost:5432/banking_system')
-app.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db = SQLAlchemy(app.app)
 
 # Define the Transaction model
 class Transaction(db.Model):
@@ -53,8 +54,14 @@ class Transaction(db.Model):
         }
 
 # Create the database tables
-with app.app.app_context():
+with flask_app.app_context():
     db.create_all()
 
+# Example route test
+@flask_app.route("/test-error")
+def test_error():
+    raise ValueError("This is a test error")
+
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0")
+    debug_mode = os.getenv("DEBUG", "false").lower() == "true"
+    app.run(flask_app, debug=debug_mode, host="0.0.0.0")
