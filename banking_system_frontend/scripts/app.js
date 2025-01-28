@@ -1,6 +1,5 @@
 const API_BASE_URL = "http://localhost:5000";
 
-// DOM Elements
 const balanceElement = document.getElementById("balance");
 const transactionsList = document.getElementById("transactions-list");
 const noTransactionsMessage = document.getElementById("no-transactions-message");
@@ -189,12 +188,12 @@ async function fetchTransactions() {
           }
 }
 
-// Open modal
+
 function openModal() {
           modal.style.display = "flex";
 }
 
-// Close modal
+
 function closeModal() {
           modal.style.display = "none";
           transactionForm.reset();
@@ -207,5 +206,4 @@ addTransactionBtn.addEventListener("click", openModal);
 closeBtn.addEventListener("click", closeModal);
 transactionForm.addEventListener("submit", saveTransaction);
 
-// Initial Load
 fetchTransactions();
